@@ -1,6 +1,8 @@
 new host setup
 ==============
 
+ssh key setup
+
 change hostname
 /etc/hostname
 /etc/hosts
@@ -14,3 +16,8 @@ install docker
 https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh ./get-docker.sh
+
+scp ~/.private/baserow_vocabai_settings.sh vocabai-app-dev:
+
+apt install git
+git clone https://github.com/Language-Tools/baserow-vocabai-scripts.git scripts

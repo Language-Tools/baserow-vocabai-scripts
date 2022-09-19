@@ -1,6 +1,8 @@
 #!/bin/bash
 
 HOSTNAME=`hostname`
+. /root/baserow_vocabai_settings.sh
+
 
 docker run \
   -d \
@@ -14,4 +16,4 @@ docker run \
   -p 80:80 \
   -p 443:443 \
   --restart unless-stopped \
-  lucwastiaux/baserow-vocabai-plugin:20220919.2
+  lucwastiaux/baserow-vocabai-plugin:${DOCKER_IMAGE_TAG}

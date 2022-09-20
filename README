@@ -10,7 +10,19 @@ reboot
 
 apt update
 apt upgrade
+apt install rclone
 reboot
+
+# rclone / wasabi setup
+rclone config
+name: baserow-vocabai-backup
+s3 compliant
+wasabi
+enter AWS credential
+look for s3 credentials in keypass
+use v4 signatures
+s3.wasabisys.com
+
 
 install docker
 https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script

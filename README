@@ -8,6 +8,8 @@ change hostname
 /etc/hosts
 reboot
 
+# ubuntu setup
+
 apt update
 apt upgrade
 apt install rclone
@@ -23,13 +25,20 @@ look for s3 credentials in keypass
 use v4 signatures
 s3.wasabisys.com
 
+# docker setup
 
 install docker
 https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh ./get-docker.sh
 
+# baserow/vocabai scripts and settings
+
 scp ~/.private/baserow_vocabai_settings.sh vocabai-app-dev:
 
 apt install git
 git clone https://github.com/Language-Tools/baserow-vocabai-scripts.git scripts
+
+# cron setup
+crontab -e
+45 23 * * * /root/scripts/backup.sh

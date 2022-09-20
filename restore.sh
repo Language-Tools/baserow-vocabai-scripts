@@ -10,7 +10,7 @@ echo "stopping baserow vocabai container"
 docker stop baserow_vocabai
 
 echo "restoring"
-docker run --rm -v baserow_data:/baserow/data -v $BACKUP_DIR:/backup ubuntu bash -c "rm -rvf /baserow/data/* && mkdir -p /baserow/data && cd /baserow/data && tar xvf /backup/${BACKUP_FILENAME} --strip-components=2"
+docker run --rm -v baserow_data:/baserow/data -v $BACKUP_DIR:/backup ubuntu bash -c "rm -rf /baserow/data/* && mkdir -p /baserow/data && cd /baserow/data && tar xzf /backup/${BACKUP_FILENAME} --strip-components=2"
 
 echo "restarting container"
 docker start baserow_vocabai

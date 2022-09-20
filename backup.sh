@@ -8,7 +8,7 @@ echo "stopping container"
 docker stop baserow_vocabai
 
 echo "running backup"
-docker run --rm -v baserow_data:/baserow/data -v $BACKUP_DIR:/backup ubuntu tar cvzf /backup/${BACKUP_FILENAME} /baserow/data
+docker run --rm -v baserow_data:/baserow/data -v $BACKUP_DIR:/backup ubuntu tar czf /backup/${BACKUP_FILENAME} /baserow/data
 
 echo "restarting container"
 docker start baserow_vocabai

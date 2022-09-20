@@ -15,7 +15,7 @@ reboot
 
 # rclone / wasabi setup
 rclone config
-name: baserow-vocabai-backup
+name: wasabi
 s3 compliant
 wasabi
 enter AWS credential

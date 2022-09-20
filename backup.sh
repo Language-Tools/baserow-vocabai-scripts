@@ -14,4 +14,4 @@ echo "restarting container"
 docker start baserow_vocabai
 
 echo "running rclone"
-rclone sync -v $BACKUP_DIR/$BACKUP_FILENAME baserow-vocabai-backup:baserow-vocabai-backup
+rclone sync -v $BACKUP_DIR/$BACKUP_FILENAME wasabi:baserow-vocabai-backup

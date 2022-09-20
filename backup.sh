@@ -2,6 +2,7 @@
 
 BACKUP_DIR=$HOME/backup
 BACKUP_FILENAME=baserow_vocabai_`hostname`.tar.gz
+BACKUP_MD5=${BACKUP_FILENAME}.md5
 mkdir -p ${BACKUP_DIR}
 
 echo "stopping container"
@@ -13,5 +14,8 @@ docker run --rm -v baserow_data:/baserow/data -v $BACKUP_DIR:/backup ubuntu tar 
 echo "restarting container"
 docker start baserow_vocabai
 
+echo "computing md5 hash"
+md5sum ${BACKUP_DIR}/${BACKUP_FILENAME} > ${BACKUP_DIR}/${BACKUP_MD5}
+
 echo "running rclone"
-rclone sync -v $BACKUP_DIR/$BACKUP_FILENAME wasabi:baserow-vocabai-backup
+rclone copy -v $BACKUP_DIR wasabi:baserow-vocabai-backup

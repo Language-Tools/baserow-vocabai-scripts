@@ -18,6 +18,17 @@ if [[ -z "${BASEROW_USER_STATS_TOKEN}" ]]; then
   exit 1
 fi
 
+if [[ -z "${EMAIL_SMTP_USER}" ]]; then
+  echo "EMAIL_SMTP_USER not set"
+  exit 1
+fi
+
+if [[ -z "${EMAIL_SMTP_PASSWORD}" ]]; then
+  echo "EMAIL_SMTP_PASSWORD not set"
+  exit 1
+fi
+
+
 docker run \
   -d \
   --name baserow_vocabai \
@@ -28,6 +39,13 @@ docker run \
   -e BASEROW_CELERY_CLT_WORKER_NUM=3 \
   -e BASEROW_USER_STATS_URL=${BASEROW_USER_STATS_URL} \
   -e BASEROW_USER_STATS_TOKEN=${BASEROW_USER_STATS_TOKEN} \
+  -e FROM_EMAIL=luc@vocab.ai \
+  -e EMAIL_SMTP=yes \
+  -e EMAIL_SMTP_USE_TLS=yes \
+  -e EMAIL_SMTP_HOST=smtp.postmarkapp.com \
+  -e EMAIL_SMTP_PORT=25 \
+  -e EMAIL_SMTP_USER=${EMAIL_SMTP_USER} \
+  -e EMAIL_SMTP_PASSWORD=${EMAIL_SMTP_PASSWORD} \
   -v baserow_data:/baserow/data \
   -p 80:80 \
   -p 443:443 \

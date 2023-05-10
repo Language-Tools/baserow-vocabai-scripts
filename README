@@ -32,6 +32,9 @@ https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-scr
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh ./get-docker.sh
 
+# how to enter the docker container
+docker exec -it baserow_vocabai /baserow.sh backend-cmd bash -c bash
+
 # baserow/vocabai scripts and settings
 
 scp ~/.private/baserow_vocabai_settings.sh vocabai-app-dev:

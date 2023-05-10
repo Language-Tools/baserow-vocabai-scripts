@@ -34,6 +34,8 @@ sh ./get-docker.sh
 
 # how to enter the docker container
 docker exec -it baserow_vocabai /baserow.sh backend-cmd bash -c bash
+# enter the docker container as root
+docker exec -it baserow_vocabai bash
 
 # baserow/vocabai scripts and settings
 
